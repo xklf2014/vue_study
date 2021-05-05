@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>{{msg}}</h1>
+      <p>请输入你想查询的内容</p>
+      <input type="text" v-model="url" />
+      <ul>
+        <li v-for="item,index in arr">
+          <span style="display: block; width: 30px; float: left"
+            >{{index+1}}.</span
+          ><span>{{item}}</span>
+        </li>
+      </ul>
+    </div>
+  </body>
+</html>
+
+<script>
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      url: '',
+      arr: [],
+    },
+    //监听实例属性变化,函数名需要和监听的属性名字保持一致
+    watch: {
+      url(newVal) {
+        let path =
+          'https://sp0.baidu.com/5a1Fazu8AA54nxGko9WTAnF6hhy/su?wd=' +
+          newVal +
+          '&cb=a'
+        let script = document.createElement('script')
+        script.src = path
+        document.body.appendChild(script)
+      },
+    },
+  })
+
+  function a(obj) {
+    vm.arr = obj.s
+  }
+</script>

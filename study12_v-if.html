@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>你的性别的是:</p>
+      <ul>
+        <li v-if="'男'===gender">男</li>
+        <li v-else-if="'女'===gender">女</li>
+        <li v-else="'男'===gender">未知</li>
+      </ul>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      gender: '哈哈',
+    },
+  })
+</script>

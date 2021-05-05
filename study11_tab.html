@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="change('军事')">军事</button>
+      <button @click="change('新闻')">新闻</button>
+      <button @click="change('农业')">农业</button>
+      <ul v-show="'军事'===info">
+        <li>飞机</li>
+        <li>坦克</li>
+        <li>火箭</li>
+      </ul>
+
+      <ul v-show="'新闻'===info">
+        <li>今日说法</li>
+        <li>国际新闻</li>
+        <li>民生新闻</li>
+      </ul>
+
+      <ul v-show="'农业'===info">
+        <li>种植</li>
+        <li>施肥</li>
+        <li>收割</li>
+      </ul>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      info: '军事',
+    },
+    methods: {
+      change: function (type) {
+        this.info = type
+      },
+    },
+  })
+</script>

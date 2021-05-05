@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    #app {
+      width: 80%;
+      height: 600px;
+      background-color: skyblue;
+      border: 2px solid black;
+      margin: 0 auto;
+    }
+
+    .brother {
+      width: 400px;
+      height: 200px;
+      background-color: pink;
+      border: 1px solid black;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <h1>我是李渊</h1>
+      <shimin class="brother"></shimin>
+      <yuanba class="brother"></yuanba>
+    </div>
+  </body>
+
+  <template id="elderBrother">
+    <div>
+      <h1>我是李世民 ---- 收到{{present}}</h1>
+    </div>
+  </template>
+
+  <template id="brother">
+    <div>
+      <h1>我是李元霸,我打下来{{gift}},我要把它送给哥哥</h1>
+      <button @click="send">赠送</button>
+    </div>
+  </template>
+</html>
+
+<script>
+  Vue.prototype.$bus = new Vue()
+  var vm = new Vue({
+    el: '#app',
+    data: {},
+    components: {
+      shimin: {
+        template: '#elderBrother',
+        data() {
+          return {
+            present: '',
+          }
+        },
+        mounted() {
+          this.$bus.$on('sendGift', ($event) => {
+            this.present = $event
+          })
+        },
+      },
+      yuanba: {
+        template: '#brother',
+        data() {
+          return {
+            gift: '天下',
+          }
+        },
+        methods: {
+          send() {
+            this.$bus.$emit('sendGift', this.gift)
+          },
+        },
+      },
+    },
+  })
+</script>

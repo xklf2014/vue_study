@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+</head>
+<body>
+
+    <div id="app">
+        <div id="example-1">
+            <button v-on:click="counter+=1">
+                数值+1: {{counter}}
+            </button>
+
+            <button v-on:click="counter+=10">
+                数值+10: {{counter}}
+            </button>
+
+            <button v-on:click="greet('hello',$event)">Greet</button>
+            <button v-on:dblclick="greet('hello twice',$event)">double twice this button</button>
+            <a v-on:click.once="doThis">click once</a>
+        </div>
+
+    </div>
+
+    <script type="text/javascript">
+        var vm = new Vue({
+            el : '#app',
+            data : {
+                counter: 0
+            },
+            methods :{
+                greet:function(v,e){
+                    alert(v);
+                    console.log(e)
+                },
+                doThis:function(){
+                    alert('just appear once')
+                }
+            }
+
+        });
+    
+    </script>
+
+
+    
+</body>
+</html>

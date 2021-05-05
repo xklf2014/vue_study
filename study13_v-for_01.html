@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <h1>v-for命令</h1>
+      <h2 v-for="item in 10">我是2级标题{{item}}</h2>
+      <hr />
+
+      <p v-for="(item,index) in arr">{{item}} --- {{index}}</p>
+      <hr />
+
+      <p>九九乘法口诀</p>
+      <table>
+        <tr v-for="row in 9">
+          <td v-for="col in 9" v-show="row >= col">
+            {{row}} * {{col}} = {{row * col}}&nbsp;&nbsp;
+          </td>
+        </tr>
+      </table>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      arr: ['吃饭', '睡觉', '打豆豆'],
+    },
+  })
+</script>

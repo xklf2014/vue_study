@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <title>Document</title>
+  </head>
+
+  <style>
+    #app {
+      width: 80%;
+      height: 300px;
+      background-color: red;
+      border: 2px solid black;
+      margin: 0 auto;
+    }
+
+    .son {
+      width: 400px;
+      height: 200px;
+      background-color: pink;
+    }
+  </style>
+
+  <body>
+    <div id="app">
+      <h1>我是李靖 --- 我有{{gift}},{{present}}</h1>
+
+      <nezha class="son" :weapon="gift" :arms="present"></nezha>
+    </div>
+  </body>
+
+  <template id="nezha">
+    <div>
+      <h1>我是哪吒---收到父亲赠送的{{weapon}}和{{arms}}</h1>
+    </div>
+  </template>
+</html>
+
+<script>
+  //父子组件传值
+  var vm = new Vue({
+    el: '#app',
+    data: {
+      gift: '火尖枪',
+      present: '风火轮',
+    },
+    components: {
+      nezha: {
+        template: '#nezha',
+        props: ['weapon', 'arms'],
+      },
+    },
+  })
+</script>
